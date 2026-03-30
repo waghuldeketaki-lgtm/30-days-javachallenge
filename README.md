@@ -21,4 +21,5 @@
 
 🔥 Day 9: Advanced Patterns  
 ⭐ Pyramid  
-⭐ Inverted Pyramid  
+⭐ Inverted Pyramid
+
