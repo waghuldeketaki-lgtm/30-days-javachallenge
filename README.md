@@ -1,4 +1,4 @@
-## 🚀 30 Days Java Coding Challenge
+ 🚀 30 Days Java Coding Challenge
 
 ### 🟢 Week 1: Foundation
 
