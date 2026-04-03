@@ -1,0 +1,66 @@
+import java.util.Scanner;
+
+class Patient {
+    int id;
+    String name;
+    int age;
+    String disease;
+
+    // Constructor
+    Patient(int id, String name, int age, String disease) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.disease = disease;
+    }
+
+    // Display method
+    void display() {
+        System.out.println("Patient ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Disease: " + disease);
+        System.out.println("------------------------");
+    }
+}
+
+public class HospitalManagementSystem {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of patients: ");
+        int n = sc.nextInt();
+        sc.nextLine(); // clear buffer
+
+        Patient[] patients = new Patient[n];
+
+        // Input patient details
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for Patient " + (i + 1));
+
+            System.out.print("Enter ID: ");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Age: ");
+            int age = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Disease: ");
+            String disease = sc.nextLine();
+
+            patients[i] = new Patient(id, name, age, disease);
+        }
+
+        // Display patient details
+        System.out.println("\n--- Patient Records ---");
+        for (int i = 0; i < n; i++) {
+            patients[i].display();
+        }
+
+        sc.close();
+    }
+}
