@@ -1,0 +1,114 @@
+import java.util.Scanner;
+
+class ATM {
+    private int pin = 1234;
+    private double balance = 1000;
+    private String[] miniStatement = new String[5];
+    private int index = 0;
+
+    // PIN check
+    boolean authenticate(int enteredPin) {
+        return enteredPin == pin;
+    }
+
+    // Deposit
+    void deposit(double amount) {
+        balance += amount;
+        addTransaction("Deposited: ₹" + amount);
+        System.out.println("✅ Amount Deposited!");
+    }
+
+    // Withdraw
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            addTransaction("Withdrawn: ₹" + amount);
+            System.out.println("✅ Collect your cash!");
+        } else {
+            System.out.println("❌ Insufficient Balance!");
+        }
+    }
+
+    // Balance check
+    void checkBalance() {
+        System.out.println("💰 Current Balance: ₹" + balance);
+    }
+
+    // Add transaction
+    void addTransaction(String record) {
+        if (index < 5) {
+            miniStatement[index++] = record;
+        } else {
+            // Shift left
+            for (int i = 0; i < 4; i++) {
+                miniStatement[i] = miniStatement[i + 1];
+            }
+            miniStatement[4] = record;
+        }
+    }
+
+    // Show mini statement
+    void showStatement() {
+        System.out.println("\n--- Mini Statement ---");
+        for (int i = 0; i < index; i++) {
+            System.out.println(miniStatement[i]);
+        }
+    }
+}
+
+public class SmartATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ATM atm = new ATM();
+
+        System.out.print("Enter PIN: ");
+        int enteredPin = sc.nextInt();
+
+        if (!atm.authenticate(enteredPin)) {
+            System.out.println("❌ Incorrect PIN!");
+            return;
+        }
+
+        while (true) {
+            System.out.println("\n--- ATM Menu ---");
+            System.out.println("1. Check Balance");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Mini Statement");
+            System.out.println("5. Exit");
+            System.out.print("Enter choice: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    atm.checkBalance();
+                    break;
+
+                case 2:
+                    System.out.print("Enter amount: ");
+                    double deposit = sc.nextDouble();
+                    atm.deposit(deposit);
+                    break;
+
+                case 3:
+                    System.out.print("Enter amount: ");
+                    double withdraw = sc.nextDouble();
+                    atm.withdraw(withdraw);
+                    break;
+
+                case 4:
+                    atm.showStatement();
+                    break;
+
+                case 5:
+                    System.out.println("Thank you for using ATM!");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
