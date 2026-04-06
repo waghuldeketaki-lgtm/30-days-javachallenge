@@ -1,0 +1,117 @@
+import java.util.*;
+
+class Passenger {
+    int id;
+    String name;
+    String trainName;
+    String source;
+    String destination;
+
+    // Constructor
+    Passenger(int id, String name, String trainName, String source, String destination) {
+        this.id = id;
+        this.name = name;
+        this.trainName = trainName;
+        this.source = source;
+        this.destination = destination;
+    }
+
+    // Display Method
+    void display() {
+        System.out.println("ID: " + id + 
+                           " Name: " + name + 
+                           " Train: " + trainName + 
+                           " From: " + source + 
+                           " To: " + destination);
+    }
+}
+
+public class RailwaySystem {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Passenger> list = new ArrayList<>();
+        int choice;
+
+        do {
+            System.out.println("\n===== Railway Reservation System =====");
+            System.out.println("1. Book Ticket");
+            System.out.println("2. View All Bookings");
+            System.out.println("3. Search Passenger");
+            System.out.println("4. Cancel Ticket");
+            System.out.println("5. Exit");
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    System.out.print("Enter Passenger ID: ");
+                    int id = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter Name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter Train Name: ");
+                    String train = sc.nextLine();
+
+                    System.out.print("Enter Source: ");
+                    String source = sc.nextLine();
+
+                    System.out.print("Enter Destination: ");
+                    String dest = sc.nextLine();
+
+                    list.add(new Passenger(id, name, train, source, dest));
+                    System.out.println("Ticket Booked Successfully!");
+                    break;
+
+                case 2:
+                    if (list.isEmpty()) {
+                        System.out.println("No bookings found.");
+                    } else {
+                        for (Passenger p : list) {
+                            p.display();
+                        }
+                    }
+                    break;
+
+                case 3:
+                    System.out.print("Enter Passenger ID to search: ");
+                    int searchId = sc.nextInt();
+                    boolean found = false;
+
+                    for (Passenger p : list) {
+                        if (p.id == searchId) {
+                            p.display();
+                            found = true;
+                        }
+                    }
+
+                    if (!found) {
+                        System.out.println("Passenger not found.");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter Passenger ID to cancel ticket: ");
+                    int cancelId = sc.nextInt();
+                    Iterator<Passenger> it = list.iterator();
+                    boolean removed = false;
+
+                    while (it.hasNext()) {
+                        Passenger p = it.next();
+                        if (p.id == cancelId) {
+                            it.remove();
+                            removed = true;
+                            System.out.println("Ticket Cancelled!");
+                        }
+                    }
+
+                    if (!removed) {
+                        System.out.println("Passenger not found.");
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Thank you for using
