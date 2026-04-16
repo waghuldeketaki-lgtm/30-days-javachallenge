@@ -5,7 +5,7 @@ import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 
-// Program Name: InteractiveDrawingApplet
+
 public class InteractiveDrawingApplet extends Applet 
     implements ActionListener, MouseListener, MouseMotionListener 
 {
@@ -98,7 +98,7 @@ public class InteractiveDrawingApplet extends Applet
         repaint();
     }
 
-    // Unused methods
+    
     public void mouseClicked(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
