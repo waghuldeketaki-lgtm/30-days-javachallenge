@@ -1,6 +1,6 @@
 import java.util.*;
 
-// Product Class
+
 class Product {
     private int id;
     private String name;
@@ -21,7 +21,7 @@ class Product {
     }
 }
 
-// Cart Item Class
+
 class CartItem {
     Product product;
     int quantity;
@@ -36,7 +36,6 @@ class CartItem {
     }
 }
 
-// Main System Class
 public class SuperShopManagementSystem {
 
     static ArrayList<Product> productList = new ArrayList<>();
@@ -88,7 +87,7 @@ public class SuperShopManagementSystem {
         } while (choice != 5);
     }
 
-    // View Products
+    
     static void viewProducts() {
         System.out.println("\n--- Product List ---");
         for (Product p : productList) {
@@ -96,7 +95,7 @@ public class SuperShopManagementSystem {
         }
     }
 
-    // Add to Cart
+    
     static void addToCart() {
         System.out.print("Enter Product ID: ");
         int id = sc.nextInt();
@@ -122,7 +121,7 @@ public class SuperShopManagementSystem {
         System.out.println("Product added to cart!");
     }
 
-    // View Cart
+    
     static void viewCart() {
         if (cart.isEmpty()) {
             System.out.println("Cart is empty!");
@@ -137,7 +136,7 @@ public class SuperShopManagementSystem {
         }
     }
 
-    // Generate Bill
+    
     static void generateBill() {
         if (cart.isEmpty()) {
             System.out.println("Cart is empty!");
